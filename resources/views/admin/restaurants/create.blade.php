@@ -7,21 +7,12 @@
         <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
         <style>
             label{ display: block; }
-            .error,.success{ font-weight: bold; }
-            .error{ color: red; }
-            .success{ color: green; }
         </style>
     </head>
     <body>
         <div>
            <h1>{{$title}}</h1><br>
-            @if(isset($error))
-                @if($error):
-                    <span class="error">ERROR!</span><br>
-                @else
-                    <span class="success">SUCCESS!</span><br>
-                @endif
-            @endif
+            @include('admin.restaurants.include.message')
             <form action="" method="post">
                 <label>Name</label><input type="text" name="name" required/><br>
                 <label>Address</label><textarea name="address" required></textarea><br><br>

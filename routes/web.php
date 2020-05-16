@@ -20,6 +20,8 @@ Route::get('/admin/restaurants/list', 'RestaurantsController@list');
 Route::get('/admin/restaurants/view/{id}', 'RestaurantsController@show');
 Route::get('/admin/restaurants/create', 'RestaurantsController@create');
 Route::post('/admin/restaurants/create', 'RestaurantsController@store');
+Route::post('/admin/restaurants/update', 'RestaurantsController@update');
+Route::get('/admin/restaurants/delete/{id}', 'RestaurantsController@delete');
 
 /*
 Route::get('/admin/restaurants/search', 'RestaurantsController@search');

@@ -16,6 +16,7 @@
     <body>
         <div>
             <h1>{{$title}}</h1><br>
+            @include('admin.restaurants.include.message')
             <a href="/admin/restaurants/create">Add</a><br>
             <table id="restaurantsTable">
                 <thead>
@@ -24,6 +25,7 @@
                         <th>Name</th>
                         <th>Address</th>
                         <th>City</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -33,6 +35,7 @@
                         <td><a href="/admin/restaurants/view/{{$restaurant->id}}">{{$restaurant->name}}</a></td>
                         <td>{{$restaurant->address}}</td>
                         <td>{{$restaurant->city}}</td>
+                        <td style="text-align:right;"><a href="/admin/restaurants/delete/{{$restaurant->id}}">Delete</a></td>
                     </tr>
                 @endforeach
                 </tbody>
