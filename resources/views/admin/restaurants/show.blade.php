@@ -21,7 +21,13 @@
                 <label>AddressTwo</label><textarea name="addressTwo">{{$restaurant->addressTwo}}</textarea><br><br>
                 <label>City</label><input type="text" name="city" value="{{$restaurant->city}}"  required/><br><br>
                 <label>Postcode</label><input type="text" name="postcode" value="{{$restaurant->postcode}}"  required/><br><br>
-                <label>Country</label><input type="text" name="countryID" value="{{$restaurant->countryID}}"  required/><br><br>
+                <label>Country</label>
+                <select name="countryID">
+                    @foreach($countries as $country)
+                        <option value="{{$country['id']}}" @if($restaurant->countryID==$country['id']) selected="selected" @endif>{{$country['name']}}</option>
+                    @endforeach
+                </select>
+                <br><br>
                 <label>Owner</label><input type="text" name="owner" value="{{$restaurant->owner}}"  required/><br><br>
                 <label>Email</label><input type="email" name="email" value="{{$restaurant->email}}"  required/><br><br>
                 <label>Telephone</label><input type="tel" name="telephone" value="{{$restaurant->telephone}}" /><br><br>

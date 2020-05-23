@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Model\Restaurant;
+use App\Model\Country;
 use Illuminate\Support\Facades\DB;
 
 class RestaurantsController extends Controller{
@@ -18,13 +19,14 @@ class RestaurantsController extends Controller{
 
     public function show($id){
         $restaurant = Restaurant::find($id);
+        $countries =  Country::all();
 
-        return view('admin.restaurants.show',['title'=>"Restaurant | Profile","restaurant"=>$restaurant]);
+        return view('admin.restaurants.show',['title'=>"Restaurant | Profile","restaurant"=>$restaurant,"countries"=>$countries]);
     }
 
     public function create(){
-
-        return view('admin.restaurants.create',['title'=>"Restaurants | Add Restaurant"]);
+        $countries =  Country::all();
+        return view('admin.restaurants.create',['title'=>"Restaurants | Add Restaurant",'countries'=>$countries]);
     }
 
     public function store(Request $request){
@@ -40,7 +42,8 @@ class RestaurantsController extends Controller{
             $restaurant->save(); //add restaurant
         }else{ $error = true; }
 
-        return view('admin.restaurants.create',['title'=>"Restaurants | Add Restaurant","error"=>$error]);
+        $countries =  Country::all();
+        return view('admin.restaurants.create',['title'=>"Restaurants | Add Restaurant","error"=>$error,'countries'=>$countries]);
     }
 
     public function update(Request $request){
@@ -54,7 +57,9 @@ class RestaurantsController extends Controller{
             $restaurant->save(); //edit restaurant
         }else{ $error = true; }
 
-        return view('admin.restaurants.show',['title'=>"Restaurants | Profile","error"=>$error,"restaurant"=>$restaurant]);
+        $countries =  Country::all();
+
+        return view('admin.restaurants.show',['title'=>"Restaurants | Profile","error"=>$error,"restaurant"=>$restaurant,'countries'=>$countries]);
     }
 
     public function delete($id){

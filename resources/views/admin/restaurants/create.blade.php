@@ -19,7 +19,13 @@
                 <label>AddressTwo</label><textarea name="addressTwo"></textarea><br><br>
                 <label>City</label><input type="text" name="city" required/><br><br>
                 <label>Postcode</label><input type="text" name="postcode" required/><br><br>
-                <label>Country</label><input type="text" name="countryID" required/><br><br>
+                <label>Country</label>
+                <select name="countryID">
+                    @foreach($countries as $country)
+                        <option value="{{$country['id']}}">{{$country['name']}}</option>
+                    @endforeach
+                </select>
+                <br><br>
                 <label>Owner</label><input type="text" name="owner" required/><br><br>
                 <label>Email</label><input type="email" name="email" required/><br><br>
                 <label>Telephone</label><input type="tel" name="telephone"/><br><br>
