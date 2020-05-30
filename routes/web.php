@@ -44,3 +44,8 @@ Route::get('/admin/orders/delete', 'OrdersController@delete');
 */
 
 
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});
