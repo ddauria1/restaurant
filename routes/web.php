@@ -17,11 +17,19 @@ Route::get('/', function () { return view('index'); });
 Route::get('/admin/login', 'LoginController@login');
 
 Route::get('/admin/restaurants/list', 'RestaurantsController@list');
+Route::get('/admin/restaurants/country', 'RestaurantsController@list');
 Route::get('/admin/restaurants/view/{id}', 'RestaurantsController@show');
 Route::get('/admin/restaurants/create', 'RestaurantsController@create');
 Route::post('/admin/restaurants/create', 'RestaurantsController@store');
 Route::post('/admin/restaurants/update', 'RestaurantsController@update');
 Route::get('/admin/restaurants/delete/{id}', 'RestaurantsController@delete');
+
+Route::get('/admin/restaurants/country', 'CountryController@list');
+Route::get('/admin/restaurants/country/create', 'CountryController@create');
+Route::post('/admin/restaurants/country/create', 'CountryController@store');
+Route::get('/admin/restaurants/country/delete/{country}', 'CountryController@delete');
+
+// Ash commit test
 
 /*
 Route::get('/admin/restaurants/search', 'RestaurantsController@search');
