@@ -1,16 +1,21 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>Restaurant</title>
-        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
-        <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
-        <style>
-            label{ display: block; }
-        </style>
-    </head>
-    <body>
-        <div>
+@extends('vendor.voyager.master')
+@section('css')
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+@endsection
+
+@section('head')
+    <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#restaurantsTable').DataTable();
+        } );
+
+    </script>
+@endsection
+
+@section('content')
+    <div class="page-content browse container-fluid">
            <h1>{{$title}}</h1><br>
             @include('admin.restaurants.include.message')
             <form action="" method="post">
@@ -35,3 +40,4 @@
         </div>
     </body>
 </html>
+@endsection

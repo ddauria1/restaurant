@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () { return view('index'); });
 Route::get('/admin/login', 'LoginController@login');
 
-Route::get('/admin/restaurants/list', 'RestaurantsController@list');
+Route::get('/admin/restaurants', 'RestaurantsController@list');
 Route::get('/admin/restaurants/country', 'RestaurantsController@list');
 Route::get('/admin/restaurants/view/{id}', 'RestaurantsController@show');
 Route::get('/admin/restaurants/create', 'RestaurantsController@create');

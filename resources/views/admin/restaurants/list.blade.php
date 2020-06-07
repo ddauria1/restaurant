@@ -1,9 +1,9 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>Restaurant</title>
-        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+@extends('vendor.voyager.master')
+@section('css')
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+@endsection
+
+@section('head')
         <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
         <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
         <script>
@@ -12,12 +12,13 @@
             } );
 
         </script>
-    </head>
-    <body>
-        <div>
+@endsection
+
+@section('content')
+        <div class="page-content browse container-fluid">
             <h1>{{$title}}</h1><br>
             @include('admin.restaurants.include.message')
-            <a href="/admin/restaurants/create">Add</a><br>
+            <a href="/admin/restaurants/create" class="btn btn-success">Add</a><br>
             <table id="restaurantsTable">
                 <thead>
                     <tr>
@@ -41,5 +42,4 @@
                 </tbody>
             </table>
         </div>
-    </body>
-</html>
+@endsection
