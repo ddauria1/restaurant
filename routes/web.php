@@ -29,6 +29,10 @@ Route::get('/admin/restaurants/country/create', 'CountryController@create');
 Route::post('/admin/restaurants/country/create', 'CountryController@store');
 Route::get('/admin/restaurants/country/delete/{country}', 'CountryController@delete');
 
+
+Route::get('/admin/staff', 'StaffController@list');
+Route::get('/admin/staff/create', 'StaffController@create');
+
 // Ash commit test
 
 /*
