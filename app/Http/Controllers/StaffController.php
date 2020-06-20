@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Model\Staff;
 use App\Model\Restaurant;
+use App\User;
 use Illuminate\Support\Facades\DB;
 
 class StaffController extends Controller{
@@ -21,16 +22,22 @@ class StaffController extends Controller{
         return view('admin.staff.list',['title'=>"Staff | List","staff"=>$staff]);
     }
 
-    /*public function show($id){
-        $restaurant = Restaurant::find($id);
-        $countries =  Country::all();
+    public function delete($id){
+        $error = true;
+        if(isset($id) && !empty($id) && is_numeric($id)){
+            $staff = Staff::find($id);
+            $staff->delete();
+            $error = false;
+        }
 
-        return view('admin.restaurants.show',['title'=>"Restaurant | Profile","restaurant"=>$restaurant,"countries"=>$countries]);
+        return redirect()->route('staff-list');
+        exit;
     }
 
     public function create(){
-        $countries =  Country::all();
-        return view('admin.restaurants.create',['title'=>"Restaurants | Add Restaurant",'countries'=>$countries]);
+        $restaurants =  Restaurant::all();
+        $users = User::all();
+        return view('admin.staff.create',['title'=>"Staff | Add",'restaurants'=>$restaurants,'users'=>$users]);
     }
 
     public function store(Request $request){
@@ -39,16 +46,26 @@ class StaffController extends Controller{
         $error = false;
 
         if(isset($post) && !empty($post)){ //first layer of validation
-            $restaurant = new Restaurant();
-            $restaurant->fill($post);
-            $restaurant->created = date("Y-m-d H:i:s");
-            $restaurant->updated = date("Y-m-d H:i:s");
-            $restaurant->save(); //add restaurant
+            $staff = new Staff();
+            $staff->fill($post);
+            $staff->active = 1;
+            $staff->created = date("Y-m-d H:i:s");
+            $staff->updated = date("Y-m-d H:i:s");
+            $staff->save();
         }else{ $error = true; }
 
-        $countries =  Country::all();
-        return view('admin.restaurants.create',['title'=>"Restaurants | Add Restaurant","error"=>$error,'countries'=>$countries]);
+        return redirect()->route('staff-list');
+        exit;
     }
+
+    /*public function show($id){
+        $restaurant = Restaurant::find($id);
+        $countries =  Country::all();
+
+        return view('admin.restaurants.show',['title'=>"Restaurant | Profile","restaurant"=>$restaurant,"countries"=>$countries]);
+    }
+
+
 
     public function update(Request $request){
 
@@ -66,18 +83,7 @@ class StaffController extends Controller{
         return view('admin.restaurants.show',['title'=>"Restaurants | Profile","error"=>$error,"restaurant"=>$restaurant,'countries'=>$countries]);
     }
 
-    public function delete($id){
-        $error = true;
-        if(isset($id) && !empty($id) && is_numeric($id)){
-            $restaurant = Restaurant::find($id);
-            $restaurant->delete();
-            $error = false;
-        }
-
-        $restaurants = Restaurant::all();
-
-        return view('admin.restaurants.list',['title'=>"Restaurants | List","restaurants"=>$restaurants,"error"=>$error]);
-    }*/
+    */
 }
 
 

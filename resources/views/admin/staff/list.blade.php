@@ -25,7 +25,8 @@
                         <th>ID</th>
                         <th>Name</th>
                         <th>Restaurant</th>
-                        <th>Creaated</th>
+                        <th>Active</th>
+                        <th>Created</th>
                         <th>Updated</th>
                         <th>Action</th>
                     </tr>
@@ -36,9 +37,16 @@
                         <td>{{$staffMember->id}}</td>
                         <td>{{$staffMember->staffName}}</td>
                         <td>{{$staffMember->restaurantName}}</td>
+                        <td>
+                            @if($staffMember->active==1)
+                                <span style="color:green; font-weight:bold">True</span>
+                            @else
+                                <span style="color:red; font-weight:bold">False</span>
+                            @endif
+                        </td>
                         <td>{{date("d M Y",strtotime($staffMember->created))}}</td>
                         <td>{{date("d M Y",strtotime($staffMember->updated))}}</td>
-                        <td style="text-align:right;"></td>
+                        <td style="text-align:right;"><a href="/admin/staff/delete/{{$staffMember->id}}">Delete</a></td>
                     </tr>
                 @endforeach
                 </tbody>
