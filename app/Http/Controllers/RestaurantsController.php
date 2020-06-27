@@ -10,11 +10,17 @@ use Illuminate\Support\Facades\DB;
 
 class RestaurantsController extends Controller{
 
-    public function list(){
+    public function list($name=null){
 
-        $restaurants = Restaurant::all();
-
-        return view('admin.restaurants.list',['title'=>"Restaurants | List","restaurants"=>$restaurants]);
+        //$restaurants = Restaurant::take(100)->get();
+        if(!isset($name)){
+            $restaurants = DB::table('restaurants')->paginate(15);
+            return view('admin.restaurants.list',['title'=>"Restaurants | List","restaurants"=>$restaurants]);
+        }else{
+            //$restaurants = Restaurant::search($name)->paginate(15);
+            $restaurants = DB::table('restaurants')->where("name","%$name%")->paginate(15);
+            print json_encode($restaurants);
+        }
     }
 
     public function show($id){

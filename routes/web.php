@@ -17,6 +17,7 @@ Route::get('/', function () { return view('index'); });
 Route::get('/admin/login', 'LoginController@login');
 
 Route::get('/admin/restaurants', 'RestaurantsController@list');
+Route::get('/admin/restaurants/{name}', 'RestaurantsController@list');
 Route::get('/admin/restaurants/country', 'RestaurantsController@list');
 Route::get('/admin/restaurants/view/{id}', 'RestaurantsController@show');
 Route::get('/admin/restaurants/create', 'RestaurantsController@create');
